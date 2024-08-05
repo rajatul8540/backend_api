@@ -6,4 +6,5 @@ class register(models.Model):
     email = models.EmailField(max_length=254)
     password = models.CharField(max_length=255)
     mobile_no = models.IntegerField(max_length=255)
+    date_of_birth = models.DateField(null=True, blank=True)  # New field
     
