@@ -13,6 +13,17 @@ class RegisterSerializrs(serializers.Serializer):
         """
         return register.objects.create(**validated_data)
     
+    def update(self, instance, validated_data):
+        """
+        Update and return an existing `Snippet` instance, given the validated data.
+        """
+        instance.name = validated_data.get('name', instance.name)
+        instance.email = validated_data.get('email', instance.email)
+        instance.password = validated_data.get('password', instance.password)
+        instance.mobile_no = validated_data.get('mobile_no', instance.mobile_no)
+        instance.save()
+        return instance
+    
     
 class LoginSerializrs(serializers.Serializer):
     email = serializers.EmailField(max_length=254)
